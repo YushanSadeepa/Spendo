@@ -2,6 +2,8 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+
 
 
 
@@ -11,6 +13,10 @@ namespace Spendo
     public partial class Form1 : Form
     {
         int selectedId = 0;
+        Timer chartTimer;
+        DataTable dtThisMonth, dtLastMonth;
+        int animationIndex = 0;
+
 
         string connectionString = @"Data Source=DESKTOP-D5GPCJD\SQLEXPRESS;Initial Catalog=Spendo;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
         public Form1()
@@ -426,6 +432,7 @@ namespace Spendo
             LoadCategoryChart();
             LoadThisMonthExpense();
             LoadTopExpenseCategory();
+            LoadMonthComparisonChart();
         }
 
 
@@ -461,6 +468,74 @@ namespace Spendo
             ClearFields();
             RefreshAllGrids();
         }
+
+        void LoadMonthComparisonChart()
+        {
+            chartMonthComparison.Series.Clear();
+            chartMonthComparison.ChartAreas.Clear();
+
+            ChartArea area = new ChartArea();
+            area.AxisX.Title = "Day";
+            area.AxisY.Title = "Amount (Rs)";
+            chartMonthComparison.ChartAreas.Add(area);
+
+            var thisMonthSeries = chartMonthComparison.Series.Add("This Month");
+            thisMonthSeries.ChartType =
+                System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            thisMonthSeries.BorderWidth = 3;
+
+            var lastMonthSeries = chartMonthComparison.Series.Add("Last Month");
+            lastMonthSeries.ChartType =
+                System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            lastMonthSeries.BorderWidth = 3;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                // 🔹 THIS MONTH
+                string thisMonthQuery =
+                    @"SELECT DAY([Date]) Day, SUM(Amount) Total
+              FROM Expenses
+              WHERE YEAR([Date]) = YEAR(GETDATE())
+              AND MONTH([Date]) = MONTH(GETDATE())
+              GROUP BY DAY([Date])
+              ORDER BY Day";
+
+                SqlCommand cmdThis = new SqlCommand(thisMonthQuery, con);
+                SqlDataReader drThis = cmdThis.ExecuteReader();
+
+                while (drThis.Read())
+                {
+                    thisMonthSeries.Points.AddXY(
+                        drThis["Day"],
+                        drThis["Total"]);
+                }
+                drThis.Close();
+
+                // 🔹 LAST MONTH
+                string lastMonthQuery =
+                    @"SELECT DAY([Date]) Day, SUM(Amount) Total
+              FROM Expenses
+              WHERE [Date] >= DATEADD(MONTH, -1,
+                    DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
+              AND [Date] < DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)
+              GROUP BY DAY([Date])
+              ORDER BY Day";
+
+                SqlCommand cmdLast = new SqlCommand(lastMonthQuery, con);
+                SqlDataReader drLast = cmdLast.ExecuteReader();
+
+                while (drLast.Read())
+                {
+                    lastMonthSeries.Points.AddXY(
+                        drLast["Day"],
+                        drLast["Total"]);
+                }
+                drLast.Close();
+            }
+        }
+
     }
 
 
