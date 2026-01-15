@@ -480,61 +480,85 @@ namespace Spendo
             chartMonthComparison.ChartAreas.Add(area);
 
             var thisMonthSeries = chartMonthComparison.Series.Add("This Month");
-            thisMonthSeries.ChartType =
-                System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            thisMonthSeries.ChartType = SeriesChartType.Line;
             thisMonthSeries.BorderWidth = 3;
+            thisMonthSeries.BorderDashStyle = ChartDashStyle.Solid;   // Smooth solid line
+            thisMonthSeries.MarkerStyle = MarkerStyle.Circle;         // Circle points
+            thisMonthSeries.MarkerSize = 7;
+            thisMonthSeries.ToolTip = "Day #VALX : Rs #VALY";          // Tooltip
 
             var lastMonthSeries = chartMonthComparison.Series.Add("Last Month");
-            lastMonthSeries.ChartType =
-                System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            lastMonthSeries.ChartType = SeriesChartType.Line;
             lastMonthSeries.BorderWidth = 3;
+            lastMonthSeries.BorderDashStyle = ChartDashStyle.Dash;    // Dashed line
+            lastMonthSeries.MarkerStyle = MarkerStyle.Square;         // Square points
+            lastMonthSeries.MarkerSize = 7;
+            lastMonthSeries.ToolTip = "Day #VALX : Rs #VALY";          // Tooltip
+
+            dtThisMonth = new DataTable();
+            dtLastMonth = new DataTable();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                // 🔹 THIS MONTH
-                string thisMonthQuery =
+                // This Month Data
+                new SqlDataAdapter(
                     @"SELECT DAY([Date]) Day, SUM(Amount) Total
               FROM Expenses
               WHERE YEAR([Date]) = YEAR(GETDATE())
               AND MONTH([Date]) = MONTH(GETDATE())
               GROUP BY DAY([Date])
-              ORDER BY Day";
+              ORDER BY Day",
+                    con).Fill(dtThisMonth);
 
-                SqlCommand cmdThis = new SqlCommand(thisMonthQuery, con);
-                SqlDataReader drThis = cmdThis.ExecuteReader();
-
-                while (drThis.Read())
-                {
-                    thisMonthSeries.Points.AddXY(
-                        drThis["Day"],
-                        drThis["Total"]);
-                }
-                drThis.Close();
-
-                // 🔹 LAST MONTH
-                string lastMonthQuery =
+                // Last Month Data
+                new SqlDataAdapter(
                     @"SELECT DAY([Date]) Day, SUM(Amount) Total
               FROM Expenses
               WHERE [Date] >= DATEADD(MONTH, -1,
                     DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
               AND [Date] < DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)
               GROUP BY DAY([Date])
-              ORDER BY Day";
+              ORDER BY Day",
+                    con).Fill(dtLastMonth);
+            }
 
-                SqlCommand cmdLast = new SqlCommand(lastMonthQuery, con);
-                SqlDataReader drLast = cmdLast.ExecuteReader();
+            animationIndex = 0;
 
-                while (drLast.Read())
-                {
-                    lastMonthSeries.Points.AddXY(
-                        drLast["Day"],
-                        drLast["Total"]);
-                }
-                drLast.Close();
+            chartTimer = new Timer();
+            chartTimer.Interval = 150; // speed (lower = faster)
+            chartTimer.Tick += AnimateChart;
+            chartTimer.Start();
+        }
+
+        void AnimateChart(object sender, EventArgs e)
+        {
+            if (animationIndex < dtThisMonth.Rows.Count)
+            {
+                chartMonthComparison.Series["This Month"]
+                    .Points.AddXY(
+                        dtThisMonth.Rows[animationIndex]["Day"],
+                        dtThisMonth.Rows[animationIndex]["Total"]);
+            }
+
+            if (animationIndex < dtLastMonth.Rows.Count)
+            {
+                chartMonthComparison.Series["Last Month"]
+                    .Points.AddXY(
+                        dtLastMonth.Rows[animationIndex]["Day"],
+                        dtLastMonth.Rows[animationIndex]["Total"]);
+            }
+
+            animationIndex++;
+
+            if (animationIndex >= dtThisMonth.Rows.Count &&
+                animationIndex >= dtLastMonth.Rows.Count)
+            {
+                chartTimer.Stop();
             }
         }
+
 
     }
 
