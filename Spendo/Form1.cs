@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using ClosedXML.Excel;
 
 
 
@@ -238,9 +239,13 @@ namespace Spendo
         }
         private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Load expenses into the report grid based on the selected month
             LoadReportData();
-            LoadCategoryChart();
+
+            // Update the category pie chart dynamically for the selected month or all history
+            LoadCategoryChartForMonth();
         }
+
         void LoadReportData()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -293,26 +298,47 @@ namespace Spendo
                 }
             }
         }
-        private void btnExportExcel_Click(object sender, EventArgs e)
+        
+
+        void LoadCategoryChartForMonth()
         {
-            Microsoft.Office.Interop.Excel.Application xlApp =
-                new Microsoft.Office.Interop.Excel.Application();
+            chartCategory.Series.Clear();
 
-            xlApp.Workbooks.Add();
+            var series = chartCategory.Series.Add("Expenses");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
-            Microsoft.Office.Interop.Excel._Worksheet sheet =
-                xlApp.ActiveSheet;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query;
 
-            for (int i = 0; i < dgvReportExpenses.Columns.Count; i++)
-                sheet.Cells[1, i + 1] = dgvReportExpenses.Columns[i].HeaderText;
+                if (cmbMonth.Text == "All")
+                {
+                    query = "SELECT Category, SUM(Amount) Total FROM Expenses GROUP BY Category";
+                }
+                else
+                {
+                    int month = DateTime.ParseExact(cmbMonth.Text, "MMMM", null).Month;
+                    query = "SELECT Category, SUM(Amount) Total FROM Expenses WHERE MONTH([Date])=@Month GROUP BY Category";
+                }
 
-            for (int i = 0; i < dgvReportExpenses.Rows.Count; i++)
-                for (int j = 0; j < dgvReportExpenses.Columns.Count; j++)
-                    sheet.Cells[i + 2, j + 1] =
-                        dgvReportExpenses.Rows[i].Cells[j].Value;
+                SqlCommand cmd = new SqlCommand(query, con);
 
-            xlApp.Visible = true;
+                if (cmbMonth.Text != "All")
+                    cmd.Parameters.AddWithValue("@Month", DateTime.ParseExact(cmbMonth.Text, "MMMM", null).Month);
+
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    series.Points.AddXY(dr["Category"], dr["Total"]);
+                }
+            }
         }
+
+
+
+
 
         private void lblThisMonthExpense_Click(object sender, EventArgs e)
         {
@@ -530,6 +556,33 @@ namespace Spendo
             chartTimer.Interval = 150; // speed (lower = faster)
             chartTimer.Tick += AnimateChart;
             chartTimer.Start();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Load selected month data into dgvReportExpenses
+            LoadReportData(); // this already uses cmbMonth selection
+
+            Microsoft.Office.Interop.Excel.Application xlApp =
+                new Microsoft.Office.Interop.Excel.Application();
+
+            xlApp.Workbooks.Add();
+
+            Microsoft.Office.Interop.Excel._Worksheet sheet = xlApp.ActiveSheet;
+
+            // Export headers
+            for (int i = 0; i < dgvReportExpenses.Columns.Count; i++)
+                sheet.Cells[1, i + 1] = dgvReportExpenses.Columns[i].HeaderText;
+
+            // Export rows
+            for (int i = 0; i < dgvReportExpenses.Rows.Count; i++)
+                for (int j = 0; j < dgvReportExpenses.Columns.Count; j++)
+                    sheet.Cells[i + 2, j + 1] = dgvReportExpenses.Rows[i].Cells[j].Value;
+
+            xlApp.Visible = true;
+
+            // Update Category Chart dynamically for the selected month
+            LoadCategoryChartForMonth();
         }
 
         void AnimateChart(object sender, EventArgs e)

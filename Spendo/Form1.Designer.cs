@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHome = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chartMonthComparison = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgvRecentExpenses = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -60,16 +61,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabReports = new System.Windows.Forms.TabPage();
-            this.btnExportExcel = new System.Windows.Forms.Button();
             this.lblHighestCategory = new System.Windows.Forms.Label();
             this.lblReportTotal = new System.Windows.Forms.Label();
             this.chartCategory = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvReportExpenses = new System.Windows.Forms.DataGridView();
             this.cmbMonth = new System.Windows.Forms.ComboBox();
-            this.chartMonthComparison = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMonthComparison)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecentExpenses)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -81,7 +82,6 @@
             this.tabReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMonthComparison)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -118,6 +118,22 @@
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Analysis";
+            // 
+            // chartMonthComparison
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartMonthComparison.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartMonthComparison.Legends.Add(legend4);
+            this.chartMonthComparison.Location = new System.Drawing.Point(6, 21);
+            this.chartMonthComparison.Name = "chartMonthComparison";
+            this.chartMonthComparison.Size = new System.Drawing.Size(560, 486);
+            this.chartMonthComparison.TabIndex = 0;
+            this.chartMonthComparison.Text = "chart1";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "Title1";
+            title2.Text = "This Month vs Last Month Expenses";
+            this.chartMonthComparison.Titles.Add(title2);
             // 
             // groupBox4
             // 
@@ -363,7 +379,7 @@
             // 
             // tabReports
             // 
-            this.tabReports.Controls.Add(this.btnExportExcel);
+            this.tabReports.Controls.Add(this.button2);
             this.tabReports.Controls.Add(this.lblHighestCategory);
             this.tabReports.Controls.Add(this.lblReportTotal);
             this.tabReports.Controls.Add(this.chartCategory);
@@ -375,15 +391,6 @@
             this.tabReports.TabIndex = 2;
             this.tabReports.Text = "📊 Reports";
             this.tabReports.UseVisualStyleBackColor = true;
-            // 
-            // btnExportExcel
-            // 
-            this.btnExportExcel.Location = new System.Drawing.Point(44, 244);
-            this.btnExportExcel.Name = "btnExportExcel";
-            this.btnExportExcel.Size = new System.Drawing.Size(75, 50);
-            this.btnExportExcel.TabIndex = 7;
-            this.btnExportExcel.Text = "Export";
-            this.btnExportExcel.UseVisualStyleBackColor = true;
             // 
             // lblHighestCategory
             // 
@@ -405,17 +412,17 @@
             // 
             // chartCategory
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartCategory.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartCategory.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.chartCategory.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartCategory.Legends.Add(legend3);
             this.chartCategory.Location = new System.Drawing.Point(601, 13);
             this.chartCategory.Name = "chartCategory";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartCategory.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartCategory.Series.Add(series2);
             this.chartCategory.Size = new System.Drawing.Size(586, 267);
             this.chartCategory.TabIndex = 2;
             this.chartCategory.Text = "chart1";
@@ -438,22 +445,17 @@
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(121, 24);
             this.cmbMonth.TabIndex = 0;
+            this.cmbMonth.SelectedIndexChanged += new System.EventHandler(this.cmbMonth_SelectedIndexChanged);
             // 
-            // chartMonthComparison
+            // button2
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartMonthComparison.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartMonthComparison.Legends.Add(legend1);
-            this.chartMonthComparison.Location = new System.Drawing.Point(6, 21);
-            this.chartMonthComparison.Name = "chartMonthComparison";
-            this.chartMonthComparison.Size = new System.Drawing.Size(560, 486);
-            this.chartMonthComparison.TabIndex = 0;
-            this.chartMonthComparison.Text = "chart1";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "This Month vs Last Month Expenses";
-            this.chartMonthComparison.Titles.Add(title1);
+            this.button2.Location = new System.Drawing.Point(156, 349);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -467,6 +469,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabHome.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chartMonthComparison)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecentExpenses)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -481,7 +484,6 @@
             this.tabReports.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartMonthComparison)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -517,10 +519,10 @@
         private System.Windows.Forms.ComboBox cmbMonth;
         private System.Windows.Forms.Label lblHighestCategory;
         private System.Windows.Forms.Label lblReportTotal;
-        private System.Windows.Forms.Button btnExportExcel;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMonthComparison;
+        private System.Windows.Forms.Button button2;
     }
 }
 
