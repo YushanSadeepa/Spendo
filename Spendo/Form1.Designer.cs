@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea62 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend62 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title31 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea61 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend61 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHome = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -66,6 +66,8 @@
             this.chartCategory = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvReportExpenses = new System.Windows.Forms.DataGridView();
             this.cmbMonth = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -81,6 +83,8 @@
             this.tabReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -122,19 +126,19 @@
             // 
             // chartMonthComparison
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartMonthComparison.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartMonthComparison.Legends.Add(legend7);
+            chartArea62.Name = "ChartArea1";
+            this.chartMonthComparison.ChartAreas.Add(chartArea62);
+            legend62.Name = "Legend1";
+            this.chartMonthComparison.Legends.Add(legend62);
             this.chartMonthComparison.Location = new System.Drawing.Point(6, 21);
             this.chartMonthComparison.Name = "chartMonthComparison";
             this.chartMonthComparison.Size = new System.Drawing.Size(560, 486);
             this.chartMonthComparison.TabIndex = 0;
             this.chartMonthComparison.Text = "chart1";
-            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.Name = "Title1";
-            title4.Text = "This Month vs Last Month Expenses";
-            this.chartMonthComparison.Titles.Add(title4);
+            title31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title31.Name = "Title1";
+            title31.Text = "This Month vs Last Month Expenses";
+            this.chartMonthComparison.Titles.Add(title31);
             // 
             // groupBox4
             // 
@@ -381,6 +385,7 @@
             // 
             // tabReports
             // 
+            this.tabReports.Controls.Add(this.pictureBox1);
             this.tabReports.Controls.Add(this.button2);
             this.tabReports.Controls.Add(this.lblReportTotal);
             this.tabReports.Controls.Add(this.chartCategory);
@@ -395,10 +400,14 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(58, 87);
+            this.button2.Location = new System.Drawing.Point(58, 98);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(429, 51);
+            this.button2.Size = new System.Drawing.Size(429, 55);
             this.button2.TabIndex = 5;
             this.button2.Text = "Export ";
             this.button2.UseVisualStyleBackColor = true;
@@ -416,23 +425,26 @@
             // 
             // chartCategory
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chartCategory.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartCategory.Legends.Add(legend8);
+            chartArea61.Name = "ChartArea1";
+            this.chartCategory.ChartAreas.Add(chartArea61);
+            legend61.Name = "Legend1";
+            this.chartCategory.Legends.Add(legend61);
             this.chartCategory.Location = new System.Drawing.Point(655, 3);
             this.chartCategory.Name = "chartCategory";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartCategory.Series.Add(series4);
+            series31.ChartArea = "ChartArea1";
+            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series31.Legend = "Legend1";
+            series31.Name = "Series1";
+            this.chartCategory.Series.Add(series31);
             this.chartCategory.Size = new System.Drawing.Size(583, 509);
             this.chartCategory.TabIndex = 2;
             this.chartCategory.Text = "chart1";
             // 
             // dgvReportExpenses
             // 
+            this.dgvReportExpenses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvReportExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReportExpenses.Location = new System.Drawing.Point(23, 181);
             this.dgvReportExpenses.Name = "dgvReportExpenses";
@@ -446,20 +458,44 @@
             this.cmbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMonth.FormattingEnabled = true;
-            this.cmbMonth.Location = new System.Drawing.Point(163, 39);
+            this.cmbMonth.Location = new System.Drawing.Point(176, 39);
             this.cmbMonth.Name = "cmbMonth";
-            this.cmbMonth.Size = new System.Drawing.Size(324, 28);
+            this.cmbMonth.Size = new System.Drawing.Size(311, 28);
             this.cmbMonth.TabIndex = 0;
             this.cmbMonth.SelectedIndexChanged += new System.EventHandler(this.cmbMonth_SelectedIndexChanged);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::Spendo.Properties.Resources.SPENDO_BOTTUM;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(-1, 566);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(624, 83);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Spendo.Properties.Resources.excell_logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(493, 91);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 51);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1246, 626);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(98)))), ((int)(((byte)(108)))));
+            this.ClientSize = new System.Drawing.Size(1246, 650);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimumSize = new System.Drawing.Size(1000, 650);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
@@ -480,6 +516,8 @@
             this.tabReports.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -518,6 +556,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartMonthComparison;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

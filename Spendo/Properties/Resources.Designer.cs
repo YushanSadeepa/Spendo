@@ -63,9 +63,49 @@ namespace Spendo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excell_logo {
+            get {
+                object obj = ResourceManager.GetObject("excell logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gemini_Generated_Image_22z7bj22z7bj22z7 {
             get {
                 object obj = ResourceManager.GetObject("Gemini_Generated_Image_22z7bj22z7bj22z7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SPENDO_BOTTUM {
+            get {
+                object obj = ResourceManager.GetObject("SPENDO BOTTUM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spendo_logo {
+            get {
+                object obj = ResourceManager.GetObject("spendo logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spendo_logo1 {
+            get {
+                object obj = ResourceManager.GetObject("spendo logo1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

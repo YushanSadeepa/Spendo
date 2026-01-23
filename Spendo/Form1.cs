@@ -25,7 +25,6 @@ namespace Spendo
         {
             InitializeComponent();
             tabControl1.DrawItem += tabControl1_DrawItem;
-            this.BackColor = Color.FromArgb(245, 247, 250);
             StyleGrid(dataGridView1);
             StyleGrid(dgvRecentExpenses);
             StyleGrid(dgvReportExpenses);
