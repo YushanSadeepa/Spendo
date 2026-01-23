@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using ClosedXML.Excel;
 
 
 
@@ -23,6 +24,16 @@ namespace Spendo
         public Form1()
         {
             InitializeComponent();
+            tabControl1.DrawItem += tabControl1_DrawItem;
+            this.BackColor = Color.FromArgb(245, 247, 250);
+            StyleGrid(dataGridView1);
+            StyleGrid(dgvRecentExpenses);
+            StyleGrid(dgvReportExpenses);
+
+
+
+
+
             dataGridView1.AllowUserToAddRows = false;
             dgvRecentExpenses.AllowUserToAddRows = false;
 
@@ -611,6 +622,66 @@ namespace Spendo
                 chartTimer.Stop();
             }
         }
+
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+            TabControl tab = sender as TabControl;
+            TabPage page = tab.TabPages[e.Index];
+            Rectangle rect = e.Bounds;
+
+            bool isSelected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            Color textColor = isSelected ? Color.Black : Color.Gray;
+            Font textFont = isSelected
+                ? new Font("Segoe UI", 10, FontStyle.Bold)
+                : new Font("Segoe UI", 10, FontStyle.Regular);
+
+
+
+            using (SolidBrush brush = new SolidBrush(textColor))
+            {
+                StringFormat sf = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+
+                e.Graphics.DrawString(page.Text, textFont, brush, rect, sf);
+            }
+            if (isSelected)
+            {
+                using (Pen pen = new Pen(Color.FromArgb(37, 99, 235), 3))
+                {
+                    e.Graphics.DrawLine(
+                        pen,
+                        rect.Left + 10,
+                        rect.Bottom - 2,
+                        rect.Right - 10,
+                        rect.Bottom - 2);
+                }
+            }
+
+        }
+
+        void StyleGrid(DataGridView dgv)
+        {
+            dgv.BackgroundColor = Color.White;
+            dgv.BorderStyle = BorderStyle.None;
+
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(245, 247, 250);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgv.EnableHeadersVisualStyles = false;
+
+            dgv.DefaultCellStyle.BackColor = Color.White;
+            dgv.DefaultCellStyle.ForeColor = Color.Black;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor =
+                Color.FromArgb(249, 250, 251);
+
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+
 
 
     }
