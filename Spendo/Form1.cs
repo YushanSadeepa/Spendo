@@ -208,7 +208,7 @@ namespace Spendo
                 return;
             }
 
-            int idToDelete = selectedId; // ✅ store safely
+            int idToDelete = selectedId; 
 
             if (MessageBox.Show(
                 "Delete this expense?",
@@ -249,10 +249,8 @@ namespace Spendo
         }
         private void cmbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Load expenses into the report grid based on the selected month
             LoadReportData();
 
-            // Update the category pie chart dynamically for the selected month or all history
             LoadCategoryChartForMonth();
         }
 
@@ -461,9 +459,9 @@ namespace Spendo
 
         void RefreshAllGrids()
         {
-            LoadRecentExpenses();     // dataGridView1
-            LoadNewestExpenses();     // dgvRecentExpenses
-            LoadReportData();         // dgvReportExpenses
+            LoadRecentExpenses();     
+            LoadNewestExpenses();     
+            LoadReportData();         
             LoadTotalExpense();
             LoadCategoryChart();
             LoadThisMonthExpense();
@@ -481,7 +479,7 @@ namespace Spendo
                 return;
             }
 
-            int idToDelete = selectedId; // ✅ store safely
+            int idToDelete = selectedId; 
 
             if (MessageBox.Show(
                 "Delete this expense?",

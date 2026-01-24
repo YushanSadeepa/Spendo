@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea62 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend62 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title31 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea61 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend61 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabHome = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -61,13 +62,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabReports = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.lblReportTotal = new System.Windows.Forms.Label();
             this.chartCategory = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvReportExpenses = new System.Windows.Forms.DataGridView();
             this.cmbMonth = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -81,10 +82,10 @@
             this.grpAddExpense.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
             this.tabReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -116,7 +117,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.chartMonthComparison);
-            this.groupBox5.Location = new System.Drawing.Point(615, 6);
+            this.groupBox5.Location = new System.Drawing.Point(640, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.groupBox5.Size = new System.Drawing.Size(572, 513);
@@ -126,19 +127,19 @@
             // 
             // chartMonthComparison
             // 
-            chartArea62.Name = "ChartArea1";
-            this.chartMonthComparison.ChartAreas.Add(chartArea62);
-            legend62.Name = "Legend1";
-            this.chartMonthComparison.Legends.Add(legend62);
-            this.chartMonthComparison.Location = new System.Drawing.Point(6, 21);
+            chartArea1.Name = "ChartArea1";
+            this.chartMonthComparison.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartMonthComparison.Legends.Add(legend1);
+            this.chartMonthComparison.Location = new System.Drawing.Point(14, 29);
             this.chartMonthComparison.Name = "chartMonthComparison";
-            this.chartMonthComparison.Size = new System.Drawing.Size(560, 486);
+            this.chartMonthComparison.Size = new System.Drawing.Size(543, 463);
             this.chartMonthComparison.TabIndex = 0;
             this.chartMonthComparison.Text = "chart1";
-            title31.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title31.Name = "Title1";
-            title31.Text = "This Month vs Last Month Expenses";
-            this.chartMonthComparison.Titles.Add(title31);
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "This Month vs Last Month Expenses";
+            this.chartMonthComparison.Titles.Add(title1);
             // 
             // groupBox4
             // 
@@ -153,11 +154,11 @@
             // dgvRecentExpenses
             // 
             this.dgvRecentExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRecentExpenses.Location = new System.Drawing.Point(26, 30);
+            this.dgvRecentExpenses.Location = new System.Drawing.Point(15, 33);
             this.dgvRecentExpenses.Name = "dgvRecentExpenses";
             this.dgvRecentExpenses.RowHeadersWidth = 51;
             this.dgvRecentExpenses.RowTemplate.Height = 24;
-            this.dgvRecentExpenses.Size = new System.Drawing.Size(547, 206);
+            this.dgvRecentExpenses.Size = new System.Drawing.Size(567, 206);
             this.dgvRecentExpenses.TabIndex = 0;
             this.dgvRecentExpenses.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecentExpenses_CellClick);
             // 
@@ -398,6 +399,16 @@
             this.tabReports.Text = "📊 Reports";
             this.tabReports.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Spendo.Properties.Resources.excell_logo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(493, 102);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 51);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -425,17 +436,17 @@
             // 
             // chartCategory
             // 
-            chartArea61.Name = "ChartArea1";
-            this.chartCategory.ChartAreas.Add(chartArea61);
-            legend61.Name = "Legend1";
-            this.chartCategory.Legends.Add(legend61);
+            chartArea2.Name = "ChartArea1";
+            this.chartCategory.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartCategory.Legends.Add(legend2);
             this.chartCategory.Location = new System.Drawing.Point(655, 3);
             this.chartCategory.Name = "chartCategory";
-            series31.ChartArea = "ChartArea1";
-            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series31.Legend = "Legend1";
-            series31.Name = "Series1";
-            this.chartCategory.Series.Add(series31);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartCategory.Series.Add(series1);
             this.chartCategory.Size = new System.Drawing.Size(583, 509);
             this.chartCategory.TabIndex = 2;
             this.chartCategory.Text = "chart1";
@@ -474,16 +485,6 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Spendo.Properties.Resources.excell_logo;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(493, 91);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(42, 51);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -493,10 +494,11 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 650);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Spendo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabHome.ResumeLayout(false);
@@ -514,10 +516,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
             this.tabReports.ResumeLayout(false);
             this.tabReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartCategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportExpenses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
